@@ -81,7 +81,26 @@ function flagQuestion() {
     a3.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
     a4.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
     flagEl.innerHTML = `<img src="${question}" alt="">`
-    questionEl.innerText = `What country have this flag?`;
+    questionEl.innerText = `Which country doies this flag belong to?`;
+}
+
+
+function populationQuestion() {
+    correctIndex = randNumber(251);
+    question = countryData[correctIndex].name.common;
+    correctAnws = (countryData[correctIndex].population / 1000000).toFixed(3) + " M";
+
+    randAnws1 = (countryData[checkNum(251, correctIndex)].population / 1000000).toFixed(3) + " M";
+    randAnws2 = (countryData[checkNum(251, correctIndex)].population / 1000000).toFixed(3) + " M";
+    randAnws3 = (countryData[checkNum(251, correctIndex)].population / 1000000).toFixed(3) + " M";
+    let arrToChoose = [correctAnws, randAnws1, randAnws2, randAnws3];
+    console.log(arrToChoose, question, correctAnws, correctIndex);
+
+    a1.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
+    a2.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
+    a3.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
+    a4.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
+    questionEl.innerText = `How many people live in ${question}?`;
 }
 
 
@@ -121,12 +140,15 @@ function nextQuestion() {
     })
     flagEl.innerHTML = ""
     btnCheck.addEventListener("click", checkQuesion, { once: true });
-    switch (randNumber(2)) {
+    switch (randNumber(3)) {
         case 0:
             flagQuestion();
             break;
         case 1:
             capitalQuestion();
+            break;
+        case 2:
+            populationQuestion();
             break;
     }
 }
