@@ -6,6 +6,7 @@ fetch("https://restcountries.com/v3.1/all").then((response) => response.json()).
 }).catch((error) => {
     console.error("Error, error");
 })
+
 // secelcted elements
 const questionEl = document.getElementById("question");
 const a1 = document.getElementById("a1").labels[0];
@@ -16,6 +17,8 @@ const btn = document.getElementById("rand");
 const btnNext = document.getElementById("next");
 const btnCheck = document.getElementById("check");
 const scoreEl = document.getElementById("score");
+const chancesEl = document.getElementById("chances");
+const flagEl = document.getElementById("flag");
 
 
 
@@ -41,13 +44,13 @@ function checkNum(max, correctIndex) {
 }
 
 function capitalQuestion() {
-    correctIndex = randNumber(250);
+    correctIndex = randNumber(251);
     question = countryData[correctIndex].capital;
     correctAnws = countryData[correctIndex].name.common;
 
-    randAnws1 = countryData[checkNum(250, correctIndex)].name.common;
-    randAnws2 = countryData[checkNum(250, correctIndex)].name.common;
-    randAnws3 = countryData[checkNum(250, correctIndex)].name.common;
+    randAnws1 = countryData[checkNum(251, correctIndex)].name.common;
+    randAnws2 = countryData[checkNum(251, correctIndex)].name.common;
+    randAnws3 = countryData[checkNum(251, correctIndex)].name.common;
     let arrToChoose = [correctAnws, randAnws1, randAnws2, randAnws3];
     console.log(arrToChoose, question, correctAnws, correctIndex);
 
@@ -57,14 +60,19 @@ function capitalQuestion() {
     a4.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
     questionEl.innerText = `${question} is the capital of:`;
 }
+
+
+
+
+
 function flagQuestion() {
-    correctIndex = randNumber(250);
-    question = countryData[correctIndex].capital;
+    correctIndex = randNumber(251);
+    question = countryData[correctIndex].flags.svg;
     correctAnws = countryData[correctIndex].name.common;
 
-    randAnws1 = countryData[checkNum(250, correctIndex)].name.common;
-    randAnws2 = countryData[checkNum(250, correctIndex)].name.common;
-    randAnws3 = countryData[checkNum(250, correctIndex)].name.common;
+    randAnws1 = countryData[checkNum(251, correctIndex)].name.common;
+    randAnws2 = countryData[checkNum(251, correctIndex)].name.common;
+    randAnws3 = countryData[checkNum(251, correctIndex)].name.common;
     let arrToChoose = [correctAnws, randAnws1, randAnws2, randAnws3];
     console.log(arrToChoose, question, correctAnws, correctIndex);
 
@@ -72,7 +80,8 @@ function flagQuestion() {
     a2.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
     a3.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
     a4.innerText = arrToChoose.splice(randNumber(arrToChoose.length), 1);
-    questionEl.innerText = `${question} is the capital of:`;
+    flagEl.innerHTML = `<img src="${question}" alt="">`
+    questionEl.innerText = `What country have this flag?`;
 }
 
 
@@ -96,7 +105,7 @@ function checkQuesion() {
         } else if (checkedOption !== correctAnws && checkedOption === a.innerText) {
             a.classList.add("wrong");
             chances--;
-            chancesEl.innerText = "Chances: " + score;
+            chancesEl.innerText = "Chances: " + chances;
         }
     })
 }
@@ -110,7 +119,16 @@ function nextQuestion() {
         i.classList.remove("correct");
         i.classList.remove("block");
     })
-    flagQuestion();
+    flagEl.innerHTML = ""
+    btnCheck.addEventListener("click", checkQuesion, { once: true });
+    switch (randNumber(2)) {
+        case 0:
+            flagQuestion();
+            break;
+        case 1:
+            capitalQuestion();
+            break;
+    }
 }
 
 
