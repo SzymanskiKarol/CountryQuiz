@@ -1,4 +1,31 @@
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+label {
+    cursor: pointer;
+    padding: .25rem;
+    margin: .25rem;
+    background-color: beige;
+    border: 1px solid;
+}
+
+
+
+.wrong {
+    color: red;
+}
+
+.correct {
+    color: green;
+}
+
+input:checked+label {
+    font-weight: 800;
+}
+
+input {
+    display: none;
 }
