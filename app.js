@@ -24,8 +24,36 @@ const btnStart = document.getElementById("start");
 const btnAgain = document.getElementById("again");
 
 const scoreEl = document.getElementById("score");
+const highScoreEl = document.getElementById("highscore");
 const chancesEl = document.getElementById("chances");
 
+
+// saving best result in Local Storage
+function highScoreLocalStorage(score) {
+    let highScore;
+    if (localStorage.getItem("highScore") === null) {
+        highScore = [];
+    } else {
+        highScore = JSON.parse(localStorage.getItem("highScore"))
+    }
+
+    highScore[0] = score;
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+}
+
+// read best score from Local Storage if exist
+function highScoreRead() {
+    let highScore;
+    if (localStorage.getItem("highScore") === null) {
+        return 0;
+    } else {
+        return highScore = (JSON.parse(localStorage.getItem("highScore")))[0]
+    }
+}
+
+// highscore
+let highScore = highScoreRead();
+highScoreEl.innerText = highScore;
 
 
 // user score
@@ -35,6 +63,8 @@ let chances = ["💗", "💗", "💗"];
 chancesEl.innerText = chances.join("");
 let correctAnws, correctIndex;
 let randAnws1, randAnws2, randAnws3, question;
+
+
 
 // generate random number 
 function randNumber(max) {
@@ -115,6 +145,8 @@ function populationQuestion() {
 function checkQuesion() {
     let checkedOption;
     document.querySelectorAll(".quiz").forEach((i) => {
+        btnNext.classList.remove("hidden");
+        btnCheck.classList.add("hidden");
         if (i.checked) {
             checkedOption = i.labels[0].innerText
             console.log(checkedOption);
@@ -132,15 +164,21 @@ function checkQuesion() {
                     chances.pop();
                     chancesEl.innerText = chances.join("");
                     if (chances.length === 0) {
-                        document.querySelector(".game-container").classList.add("hidden");
-                        document.querySelector(".end-container").classList.remove("hidden");
-                        document.querySelector(".top-img").classList.add("hidden");
-                        document.getElementById("result").innerText = score;
+                        btnNext.classList.add("hidden");
+                        btnCheck.classList.add("hidden");
+                        if (score > highScore) {
+                            highScoreLocalStorage(score);
+                        }
+                        setTimeout(() => {
+                            document.querySelector(".game-container").classList.add("hidden");
+                            document.querySelector(".end-container").classList.remove("hidden");
+                            document.querySelector(".top-img").classList.add("hidden");
+                            document.getElementById("result").innerText = score;
+                        }, 1000)
                     }
                 }
             })
-            btnNext.classList.remove("hidden");
-            btnCheck.classList.add("hidden");
+
         } else {
             console.log("not picked");
         }
@@ -175,19 +213,18 @@ function nextQuestion() {
     }
 }
 
+// Start game or Try Again function 
 function startGame() {
     document.querySelector(".start-container").classList.add("hidden");
     document.querySelector(".game-container").classList.remove("hidden");
     document.querySelector(".end-container").classList.add("hidden");
     score = 0;
+    scoreEl.innerText = "Score: " + score;
     chances = ["💗", "💗", "💗"];
     chancesEl.innerText = chances.join("");
+    btnNext.classList.remove("hidden");
     nextQuestion();
 }
-
-
-
-// Check button starting checking function
 btnStart.addEventListener("click", startGame);
 btnAgain.addEventListener("click", startGame);
 

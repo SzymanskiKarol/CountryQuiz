@@ -180,7 +180,8 @@ input {
     height: 400px;
 }
 
-#result {
+#result,
+#highscore {
     color: #60BF88;
     font-size: 2rem;
     font-weight: 700;
