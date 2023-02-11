@@ -12,21 +12,44 @@
 </head>
 
 <body>
-  <span id="flag"></span>
-  <h2 id="question"></h2>
-  <input class="quiz" type="radio" name="quiz" id="a1">
-  <label for="a1"></label>
-  <input class="quiz" type="radio" name="quiz" id="a2">
-  <label for="a2"></label>
-  <input class="quiz" type="radio" name="quiz" id="a3">
-  <label for="a3"></label>
-  <input class="quiz" type="radio" name="quiz" id="a4">
-  <label for="a4"></label>
-
-  <button id="check">Chec</button>
-  <button id="next">Next</button>
-  <h3 id="score">Score: 0</h3>
-  <h3 id="chances">Chances: 3</h3>
+  <div class="container">
+    <h1 class="title">COUNTRY QUIZ</h1>
+    <img class="top-img" src="images/question.svg" alt="">
+    <div class="start-container">
+      <h1>Welcome to <br> Country Quiz</h1>
+      <p>in this game you will answer questions about all the countries of the world. <br>You have 💗💗💗 lives, if you
+        lose them all... you lose.<br> Try to score as many points as possible</p>
+      <button id="start">Start</button>
+    </div>
+    <div class="game-container hidden">
+      <div class="question-box">
+        <div id="flag"></div>
+        <h2 id="question"></h2>
+      </div>
+      <div class="anwser-box">
+        <input class="quiz" type="radio" name="quiz" id="a1">
+        <label for="a1"></label>
+        <input class="quiz" type="radio" name="quiz" id="a2">
+        <label for="a2"></label>
+        <input class="quiz" type="radio" name="quiz" id="a3">
+        <label for="a3"></label>
+        <input class="quiz" type="radio" name="quiz" id="a4">
+        <label for="a4"></label>
+      </div>
+      <button id="check">Submit Answer</button>
+      <button id="next">Next Question</button>
+      <h3 id="score">Score: 0</h3>
+      <h3 id="chances"></h3>
+    </div>
+    <div class="end-container hidden">
+      <img src="images/win.svg" alt="">
+      <div class="results-box">
+        <h1>Results</h1>
+        <p>You got <span id="result"></span> correct answers</p>
+      </div>
+      <button id="again">Try Again</button>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
 
