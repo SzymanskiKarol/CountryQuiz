@@ -1,3 +1,8 @@
+:root {
+    --dark-blue: #1D355D;
+    --light-blue: #6066d0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,10 +19,10 @@ body {
     background-size: cover;
     font-family: Poppins, sans-serif;
     font-weight: 500;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
-
+/* Main Containers */
 .container {
     width: 460px;
     background: white;
@@ -34,7 +39,6 @@ body {
 .top-img {
     position: absolute;
     top: 0;
-    ;
 }
 
 .top-img {
@@ -54,7 +58,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    color: #1D355D;
+    color: var(--dark-blue);
     height: 400px;
     text-align: center;
     margin-top: 2rem;
@@ -72,9 +76,19 @@ body {
     gap: .5rem;
 }
 
+.end-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    height: 400px;
+}
+
 button {
-    background: #1D355D;
-    border: 2px solid #1D355D;
+    background: var(--dark-blue);
+    border: 2px solidvar(--dark-blue);
     color: white;
     border-radius: 5px;
     font-family: Poppins, sans-serif;
@@ -88,7 +102,7 @@ button {
 
 button:hover {
     background: white;
-    color: #1D355D;
+    color: var(--dark-blue);
 }
 
 .anwser-box {
@@ -108,8 +122,8 @@ label {
     align-items: center;
     justify-content: center;
     border-radius: 0.75rem;
-    border: 2px solid #6066d0;
-    color: #6066d0;
+    border: 2px solid var(--light-blue);
+    color: var(--light-blue);
     font-size: 1rem;
     line-height: 1;
 }
@@ -130,7 +144,7 @@ h2 {
 }
 
 
-
+/* Answer styling */
 .wrong {
     background: #EA8282;
     border-color: #EA8282;
@@ -171,16 +185,6 @@ input {
 }
 
 
-.end-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 1rem;
-    height: 400px;
-}
-
 #result,
 #highscore {
     color: #60BF88;
@@ -189,6 +193,12 @@ input {
     margin: 0 .25rem;
 }
 
+
+.hidden {
+    display: none;
+}
+
+/* Animated Images */
 .background-icon {
     position: absolute;
     height: 150px;
@@ -198,21 +208,21 @@ input {
 }
 
 .flag {
-    right: 15%;
-    top: 20%;
+    right: 5%;
+    top: 15%;
     animation: move-h 60s infinite;
 
 }
 
 .q-mark {
     left: 10%;
-    top: 10%;
+    top: 5%;
     animation: rotate 60s infinite;
 }
 
 .q-mark-2 {
-    right: 10%;
-    bottom: 30%;
+    right: 20%;
+    bottom: 15%;
     animation: rotateAndScale 60s infinite;
 }
 
@@ -222,7 +232,7 @@ input {
     animation: move-v 60s infinite;
 }
 
-
+/* Animations */
 @keyframes rotate {
     0% {
         transform: rotate(0deg)
@@ -249,19 +259,23 @@ input {
 
 @keyframes move-v {
     0% {
-        transform: translateY(0) scale(.5)
+        transform: translateY(0) scale(1)
     }
 
     25% {
-        transform: translateY(100px) scale(1.5)
+        transform: translateY(-100px) scale(1.5)
+    }
+
+    50% {
+        transform: scale(3)
     }
 
     75% {
-        transform: translateY(-100px) scale(1)
+        transform: translateY(100px) scale(1.5)
     }
 
     100% {
-        transform: translateX(0) scale(.5)
+        transform: translateX(0) scale(1)
     }
 }
 
@@ -283,6 +297,34 @@ input {
     }
 }
 
-.hidden {
-    display: none;
+@media (max-width: 500px) {
+    .container {
+        width: 90vw;
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .game-container {
+        margin: 0;
+        width: 100%;
+    }
+
+    .anwser-box {
+        width: 100%;
+    }
+
+    label {
+        width: 100%;
+    }
+
+
+    .title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .title {
+        font-size: 1rem;
+    }
 }
