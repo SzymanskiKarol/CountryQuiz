@@ -145,9 +145,9 @@ function populationQuestion() {
 function checkQuesion() {
     let checkedOption;
     document.querySelectorAll(".quiz").forEach((i) => {
-        btnNext.classList.remove("hidden");
-        btnCheck.classList.add("hidden");
         if (i.checked) {
+            btnCheck.classList.add("hidden");
+            btnNext.classList.remove("hidden");
             checkedOption = i.labels[0].innerText
             console.log(checkedOption);
             i.checked = false;

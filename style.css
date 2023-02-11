@@ -14,6 +14,7 @@ body {
     background-size: cover;
     font-family: Poppins, sans-serif;
     font-weight: 500;
+    overflow: hidden;
 }
 
 
@@ -188,10 +189,99 @@ input {
     margin: 0 .25rem;
 }
 
+.background-icon {
+    position: absolute;
+    height: 150px;
+    opacity: .1;
+    z-index: -10;
+
+}
+
+.flag {
+    right: 15%;
+    top: 20%;
+    animation: move-h 60s infinite;
+
+}
+
+.q-mark {
+    left: 10%;
+    top: 10%;
+    animation: rotate 60s infinite;
+}
+
+.q-mark-2 {
+    right: 10%;
+    bottom: 30%;
+    animation: rotateAndScale 60s infinite;
+}
+
+.globe {
+    bottom: 15%;
+    left: 20%;
+    animation: move-v 60s infinite;
+}
 
 
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
 
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
+@keyframes rotateAndScale {
+    0% {
+        transform: rotate(360deg) scale(.5)
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.5);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(.5);
+    }
+}
+
+@keyframes move-v {
+    0% {
+        transform: translateY(0) scale(.5)
+    }
+
+    25% {
+        transform: translateY(100px) scale(1.5)
+    }
+
+    75% {
+        transform: translateY(-100px) scale(1)
+    }
+
+    100% {
+        transform: translateX(0) scale(.5)
+    }
+}
+
+@keyframes move-h {
+    0% {
+        transform: translateX(0)
+    }
+
+    25% {
+        transform: translateX(50px)
+    }
+
+    75% {
+        transform: translateX(-50px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
 
 .hidden {
     display: none;
