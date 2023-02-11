@@ -174,7 +174,7 @@ function checkQuesion() {
                             document.querySelector(".end-container").classList.remove("hidden");
                             document.querySelector(".top-img").classList.add("hidden");
                             document.getElementById("result").innerText = score;
-                        }, 1000)
+                        }, 2000)
                     }
                 }
             })
