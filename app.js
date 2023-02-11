@@ -183,7 +183,10 @@ function checkQuesion() {
             console.log("not picked");
         }
     });
-
+    let aArr = [a1, a2, a3, a4];
+    aArr.forEach(function (i) {
+        i.control.disabled = true;
+    })
 }
 
 
@@ -193,7 +196,8 @@ function nextQuestion() {
     aArr.forEach(function (i) {
         i.classList.remove("wrong");
         i.classList.remove("correct");
-        i.checked = false;
+        i.control.checked = false;
+        i.control.disabled = false;
     })
     flagEl.innerHTML = ""
     document.querySelector(".top-img").classList.remove("hidden");
