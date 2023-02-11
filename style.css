@@ -15,7 +15,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(images/background.png) no-repeat;
+    background: url(images/map4.svg) no-repeat;
     background-size: cover;
     font-family: Poppins, sans-serif;
     font-weight: 500;
@@ -207,6 +207,7 @@ input {
 
 /* Animated Images */
 .background-icon {
+    fill: white;
     position: absolute;
     height: 150px;
     opacity: .1;
